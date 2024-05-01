@@ -45,8 +45,8 @@ $ npm run start:prod
 ## Migrations
 
 ```sh
-# Generate migrations
-npx prisma migrate dev --name init
+# Generate a new migration
+npx prisma migrate dev --name MigrationName
 ```
 
 ## Test

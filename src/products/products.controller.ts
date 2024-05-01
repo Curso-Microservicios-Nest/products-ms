@@ -53,4 +53,10 @@ export class ProductsController {
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.productsService.remove(id);
   }
+
+  @Delete('soft-delete/:id')
+  @ApiOperation({ summary: 'Soft delete a product by ID' })
+  softRemove(@Param('id', ParseIntPipe) id: number) {
+    return this.productsService.softRemove(id);
+  }
 }
