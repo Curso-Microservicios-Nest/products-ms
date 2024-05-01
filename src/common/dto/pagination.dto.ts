@@ -7,11 +7,11 @@ export class PaginationDto {
   @IsPositive()
   @IsOptional()
   @Type(() => Number)
-  page?: number = 1;
+  readonly page?: number = 1;
 
   @ApiProperty({ description: 'Number of items per page', default: 10 })
   @IsPositive()
   @IsOptional()
   @Type(() => Number)
-  limit?: number = 10;
+  readonly limit?: number = 10;
 }

@@ -8,7 +8,6 @@ import { PrismaClient } from '@prisma/client';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { last } from 'rxjs';
 
 @Injectable()
 export class ProductsService extends PrismaClient implements OnModuleInit {
@@ -19,8 +18,8 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     this.logger.log('💎 Connected to the database');
   }
 
-  create(createProductDto: CreateProductDto) {
-    return this.product.create({ data: createProductDto });
+  create(createProduct: CreateProductDto) {
+    return this.product.create({ data: createProduct });
   }
 
   async findAll(pagination: PaginationDto) {
@@ -45,11 +44,13 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     return product;
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  async update(id: number, updateProduct: UpdateProductDto) {
+    await this.findOne(id);
+    return this.product.update({ where: { id }, data: updateProduct });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async remove(id: number) {
+    await this.findOne(id);
+    return this.product.delete({ where: { id } });
   }
 }

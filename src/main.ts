@@ -20,7 +20,6 @@ async function bootstrap() {
     .setTitle('Products - Microservice')
     .setDescription('The Product API description')
     .setVersion('1.0')
-    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

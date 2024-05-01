@@ -23,8 +23,8 @@ export class ProductsController {
   @Post()
   @ApiOperation({ summary: 'Create a new product' })
   @ApiCreatedResponse({ description: 'Product created successfully' })
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  create(@Body() createProduct: CreateProductDto) {
+    return this.productsService.create(createProduct);
   }
 
   @Get()
@@ -41,13 +41,16 @@ export class ProductsController {
 
   @Patch(':id')
   @ApiOperation({ summary: 'Update a product by ID' })
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(+id, updateProductDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateProductDto: UpdateProductDto,
+  ) {
+    return this.productsService.update(id, updateProductDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a product by ID' })
-  remove(@Param('id') id: string) {
-    return this.productsService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.productsService.remove(id);
   }
 }
