@@ -14,12 +14,12 @@ export class ProductsController {
     return this.productsService.create(createProduct);
   }
 
-  @MessagePattern({ cmd: 'find_all' })
+  @MessagePattern({ cmd: 'findAll' })
   findAll(@Payload() pagination: PaginationDto) {
     return this.productsService.findAll(pagination);
   }
 
-  @MessagePattern({ cmd: 'find_one' })
+  @MessagePattern({ cmd: 'findOne' })
   findOne(@Payload('id', ParseIntPipe) id: number) {
     return this.productsService.findOne(id);
   }
@@ -35,7 +35,7 @@ export class ProductsController {
     return this.productsService.remove(id);
   }
 
-  @MessagePattern({ cmd: 'soft_remove' })
+  @MessagePattern({ cmd: 'softRemove' })
   softRemove(@Payload('id', ParseIntPipe) id: number) {
     return this.productsService.softRemove(id);
   }
