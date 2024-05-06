@@ -1,10 +1,4 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-## Description
-
-Microservicios de Productos
+# Products - microservice
 
 ## Instalación
 
@@ -28,6 +22,12 @@ $ npm run start:prod
 ## Migraciones
 
 ```sh
+# Instalar el Cliente de Prisma
+npm install @prisma/client
+
+# Configura e inicializa Prisma en el proyecto
+npx prisma init
+
 # Ejecutar las migraciones y crear la base de datos
 npx prisma migrate dev
 
